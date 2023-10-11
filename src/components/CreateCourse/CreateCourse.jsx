@@ -54,7 +54,15 @@ function CreateCourse(props) {
 							id='course-duration'
 							placeholder='Enter course duration in mins...'
 						/>
-						<Button type={true} buttonText='Accept' clicHandle={addCourse} />
+						<div
+							style={{
+								marginTop: '6px',
+								display: 'flex',
+								justifyContent: 'center',
+							}}
+						>
+							<Button type={true} buttonText='Accept' clicHandle={addCourse} />
+						</div>
 					</div>
 				</div>
 			)}

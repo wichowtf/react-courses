@@ -11,6 +11,8 @@
     z-index: 1000; /* Asegura que esté encima de otros elementos */
   
     .dialog-content {
+      width: 400px;
+      height: 240px;
       background-color: #fff;
       display: flex;
       flex-direction: column;
@@ -37,8 +39,9 @@
       cursor: pointer;
       font-size: 1.2em;
     }
+    .input{
+      margin: 10px !important;
+    }
   }
-  .input{
-    margin: 10px !important;
-  }
+
   
