@@ -1,0 +1,16 @@
+.courses-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid lightseagreen;
+  margin-top: 20px;
+  padding: 20px;
+}
+.search-bar2{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}

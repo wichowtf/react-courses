@@ -1,0 +1,20 @@
+.purple-btn {
+  background-color: white;
+  border: 1px solid purple;
+}
+.white-btn{
+  background-color: white;
+  border: none;
+}
+
+button {
+  padding: 4px 25px;
+  border-radius: 4px;
+  font-weight: bold;
+  margin: 0px 10px;
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: lightgray;
+}
