@@ -44,6 +44,7 @@ function Courses() {
 					return (
 						<CourseCard
 							key={course.id}
+							id={course.id}
 							name={course.name}
 							description={course.description}
 							authors={course.authors}

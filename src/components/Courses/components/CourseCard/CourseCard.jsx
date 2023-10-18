@@ -6,8 +6,13 @@ import formatDuration from '../../../../helpers/getCourseDuration.js';
 import creationDateFormat from '../../../../helpers/formatCreationDate.js';
 
 import './CoursesCard.css';
+import { useNavigate } from 'react-router';
 
-function CourseCard({ name, description, duration, created, authors }) {
+function CourseCard({ name, description, duration, created, authors, id }) {
+	const navigate = useNavigate();
+	function goToCourse() {
+		navigate('/courses/' + id);
+	}
 	return (
 		<div className='card-container'>
 			<div className='card-name-section'>
@@ -28,7 +33,11 @@ function CourseCard({ name, description, duration, created, authors }) {
 					{creationDateFormat(created)}
 				</p>
 				<div className='card-button'>
-					<Button type={true} buttonText='Show course' />
+					<Button
+						type={true}
+						buttonText='Show course'
+						clicHandle={goToCourse}
+					/>
 				</div>
 			</div>
 		</div>

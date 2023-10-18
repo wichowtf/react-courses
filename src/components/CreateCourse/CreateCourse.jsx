@@ -7,6 +7,12 @@ import './CreateCourse.css';
 
 function CreateCourse(props) {
 	const [isOpen, setIsOpen] = useState(false);
+	const [courseName, setCourseName] = useState('');
+	const [courseDescription, setCourseDescription] = useState('');
+	const [courseDuration, setCourseDuration] = useState('');
+
+	const isButtonDisabled =
+		courseName === '' || courseDescription === '' || courseDuration === '';
 
 	const openDialog = () => {
 		setIsOpen(true);
@@ -19,14 +25,24 @@ function CreateCourse(props) {
 	function addCourse() {
 		let newCourse = {
 			id: Math.floor(Math.random() * 10001).toString(),
-			name: document.getElementById('course-name').value,
-			description: document.getElementById('course-description').value,
+			name: courseName,
+			description: courseDescription,
 			authors: ['anonymuse'],
-			duration: +document.getElementById('course-duration').value,
+			duration: courseDuration,
 			created: new Date(),
 		};
 		props.updateCourses(newCourse);
 		setIsOpen(false);
+	}
+
+	function handleChangeName(event) {
+		setCourseName(event.target.value);
+	}
+	function handleChangeDescription(event) {
+		setCourseDescription(event.target.value);
+	}
+	function handleChangeDuration(event) {
+		setCourseDuration(event.target.value);
 	}
 	return (
 		<div>
@@ -43,16 +59,23 @@ function CreateCourse(props) {
 							className='input'
 							id='course-name'
 							placeholder='Enter course name...'
+							handleChange={handleChangeName}
+							val={courseName}
 						/>
 						<Input
 							className='input'
 							id='course-description'
 							placeholder='Enter course description...'
+							handleChange={handleChangeDescription}
+							val={courseDescription}
 						/>
 						<Input
 							className='input'
 							id='course-duration'
 							placeholder='Enter course duration in mins...'
+							handleChange={handleChangeDuration}
+							val={courseDuration}
+							type={'number'}
 						/>
 						<div
 							style={{
@@ -61,7 +84,12 @@ function CreateCourse(props) {
 								justifyContent: 'center',
 							}}
 						>
-							<Button type={true} buttonText='Accept' clicHandle={addCourse} />
+							<Button
+								type={true}
+								buttonText='Accept'
+								clicHandle={addCourse}
+								disabled={isButtonDisabled}
+							/>
 						</div>
 					</div>
 				</div>

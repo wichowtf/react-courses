@@ -7,6 +7,7 @@ function Button(props) {
 		<button
 			className={props.type ? 'purple-btn' : 'white-btn'}
 			onClick={props.clicHandle}
+			disabled={props.disabled}
 		>
 			{props.buttonText}
 		</button>
