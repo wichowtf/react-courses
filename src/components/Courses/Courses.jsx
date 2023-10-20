@@ -7,20 +7,26 @@ import CourseCard from './components/CourseCard/CourseCard';
 import CreateCourse from '../CreateCourse/CreateCourse';
 
 import './Courses.css';
-import { useSelector } from 'react-redux';
+import { /* useDispatch, */ useSelector } from 'react-redux';
+
+/* import { getAllCoursesAction } from '../../store/courses/actions'; */
 
 /* import { coursesListArray } from '../../constants'; */
 
 function Courses() {
 	const coursesListArray = useSelector((state) => state.courses);
 	/* console.log(coursesListArray); */
+	/* const dispatch = useDispatch(); */
 	const [filteredArray, setFilteredArray] = React.useState([
 		...coursesListArray,
 	]);
-
 	useEffect(() => {
 		setFilteredArray([...coursesListArray]);
 	}, [coursesListArray]);
+
+	/* useEffect(() => {
+		dispatch(getAllCoursesAction());
+	}, []); */
 
 	function filterCourses(search) {
 		if (search !== '') {
@@ -48,7 +54,7 @@ function Courses() {
 				<CreateCourse /* updateCourses={updateCourses} */ />
 			</div>
 			<div className='couses-list'>
-				{filteredArray.map((course) => {
+				{filteredArray.map((course, index) => {
 					return (
 						<CourseCard
 							key={course.id}
@@ -58,6 +64,7 @@ function Courses() {
 							authors={course.authors}
 							created={course.created}
 							duration={course.duration}
+							index={index}
 						/>
 					);
 				})}

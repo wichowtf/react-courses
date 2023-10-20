@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 
-import { coursesListArray } from '../../constants';
+/* import { coursesListArray } from '../../constants'; */
 
 import formatDuration from '../../helpers/getCourseDuration.js';
 import creationDateFormat from '../../helpers/formatCreationDate.js';
+import { useSelector } from 'react-redux';
 
 function CourseInfo() {
 	const params = useParams();
 	const [course, setCourse] = useState({});
 	const [renderCourse, setRenderCourse] = useState(false);
+	const coursesListArray = useSelector((state) => state.courses);
 
 	useEffect(() => {
 		setCourse(
 			coursesListArray.filter((element) => element.id === params.courseId)[0]
 		);
 		setRenderCourse(true);
-		console.log('entro');
-	}, [params.courseId, course]);
+	}, [params.courseId, course, coursesListArray]);
 
 	return (
 		<div className='course-container'>

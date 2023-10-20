@@ -41,19 +41,24 @@ export const coursesInitialState = [
 
 // Use the initialState as a default value
 export const coursesReducer = (state = coursesInitialState, action) => {
-	// The reducer normally looks at the action type field to decide what happens
 	switch (action.type) {
-		// Do something here based on the different types of actions
 		case types.SAVE_COURSES:
 			return action.payload;
 
 		case types.ADD_COURSE:
-			console.log('entra reducr', action);
 			return [...state, action.payload];
 
+		case types.DELETE_COURSE:
+			const courseIdToRemove = action.payload;
+			const updatedCourses = state.filter(
+				(course) => course.id !== courseIdToRemove
+			);
+			return updatedCourses;
+
+		case 'GET_ALL_COURSES':
+			return state;
+
 		default:
-			// If this reducer doesn't recognize the action type, or doesn't
-			// care about this specific action, return the existing state unchanged
 			return state;
 	}
 };

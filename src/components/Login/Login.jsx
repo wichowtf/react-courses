@@ -58,7 +58,6 @@ function Login() {
 			},
 		}).then(async (res) => {
 			const result = await res.json();
-			console.log(result);
 			localStorage.setItem('token', result.result);
 			navigate('/courses', { replace: true });
 		});

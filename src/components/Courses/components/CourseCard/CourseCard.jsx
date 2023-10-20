@@ -5,14 +5,30 @@ import Button from '../../../../common/Button/Button';
 import formatDuration from '../../../../helpers/getCourseDuration.js';
 import creationDateFormat from '../../../../helpers/formatCreationDate.js';
 
+import { deleteCourseAction } from '../../../../store/courses/actions';
+
 import './CoursesCard.css';
 import { useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux';
 
-function CourseCard({ name, description, duration, created, authors, id }) {
+function CourseCard({
+	name,
+	description,
+	duration,
+	created,
+	authors,
+	id,
+	index,
+}) {
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+
 	function goToCourse() {
 		navigate('/courses/' + id);
-		console.log('entra redirect');
+	}
+
+	function deleteCourse() {
+		dispatch(deleteCourseAction(id));
 	}
 	return (
 		<div className='card-container'>
@@ -27,7 +43,7 @@ function CourseCard({ name, description, duration, created, authors, id }) {
 				</p>
 				<p>
 					<strong>Duration: </strong>
-					{formatDuration(duration)} min
+					{formatDuration(duration)} hrs
 				</p>
 				<p>
 					<strong>Created: </strong>
@@ -39,6 +55,7 @@ function CourseCard({ name, description, duration, created, authors, id }) {
 						buttonText='Show course'
 						clicHandle={goToCourse}
 					/>
+					<Button type={true} buttonText='Delete' clicHandle={deleteCourse} />
 				</div>
 			</div>
 		</div>

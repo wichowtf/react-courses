@@ -23,7 +23,7 @@ function App() {
 		} else {
 			navigate('/courses', { replace: true });
 		}
-	}, [navigate]);
+	}, []);
 	return (
 		<div className='layout'>
 			<div className='center-layout'>
