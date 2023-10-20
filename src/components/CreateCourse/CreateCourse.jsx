@@ -4,12 +4,17 @@ import Button from '../../common/Button/Button';
 import Input from '../../common/Input/Input';
 
 import './CreateCourse.css';
+import { useDispatch } from 'react-redux';
+
+import { addCourseAction } from '../../store/courses/actions';
 
 function CreateCourse(props) {
 	const [isOpen, setIsOpen] = useState(false);
 	const [courseName, setCourseName] = useState('');
 	const [courseDescription, setCourseDescription] = useState('');
 	const [courseDuration, setCourseDuration] = useState('');
+
+	const dispatch = useDispatch();
 
 	const isButtonDisabled =
 		courseName === '' || courseDescription === '' || courseDuration === '';
@@ -31,7 +36,8 @@ function CreateCourse(props) {
 			duration: courseDuration,
 			created: new Date(),
 		};
-		props.updateCourses(newCourse);
+		dispatch(addCourseAction(newCourse));
+		/* props.updateCourses(); */
 		setIsOpen(false);
 	}
 

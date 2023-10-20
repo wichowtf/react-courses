@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 /* import { useState } from 'react'; */
 
 import SearchBar from './components/SearchBar/SearchBar';
@@ -7,13 +7,20 @@ import CourseCard from './components/CourseCard/CourseCard';
 import CreateCourse from '../CreateCourse/CreateCourse';
 
 import './Courses.css';
+import { useSelector } from 'react-redux';
 
-import { coursesListArray } from '../../constants';
+/* import { coursesListArray } from '../../constants'; */
 
 function Courses() {
+	const coursesListArray = useSelector((state) => state.courses);
+	/* console.log(coursesListArray); */
 	const [filteredArray, setFilteredArray] = React.useState([
 		...coursesListArray,
 	]);
+
+	useEffect(() => {
+		setFilteredArray([...coursesListArray]);
+	}, [coursesListArray]);
 
 	function filterCourses(search) {
 		if (search !== '') {
@@ -28,16 +35,17 @@ function Courses() {
 		}
 	}
 
-	function updateCourses(course) {
+	/* function updateCourses(course) {
 		coursesListArray.push(course);
 		setFilteredArray([...coursesListArray]);
-		/* console.log(course); */
-	}
+		console.log('update filter', coursesListArray);
+		console.log(course);
+	} */
 	return (
 		<div className='courses-container'>
 			<div className='search-bar2'>
 				<SearchBar emmitSearch={filterCourses} />
-				<CreateCourse updateCourses={updateCourses} />
+				<CreateCourse /* updateCourses={updateCourses} */ />
 			</div>
 			<div className='couses-list'>
 				{filteredArray.map((course) => {

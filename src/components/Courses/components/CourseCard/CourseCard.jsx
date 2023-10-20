@@ -12,6 +12,7 @@ function CourseCard({ name, description, duration, created, authors, id }) {
 	const navigate = useNavigate();
 	function goToCourse() {
 		navigate('/courses/' + id);
+		console.log('entra redirect');
 	}
 	return (
 		<div className='card-container'>

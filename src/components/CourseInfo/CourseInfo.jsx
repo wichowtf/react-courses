@@ -16,6 +16,7 @@ function CourseInfo() {
 			coursesListArray.filter((element) => element.id === params.courseId)[0]
 		);
 		setRenderCourse(true);
+		console.log('entro');
 	}, [params.courseId, course]);
 
 	return (
