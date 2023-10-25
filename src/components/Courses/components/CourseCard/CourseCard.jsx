@@ -47,7 +47,7 @@ function CourseCard({
 				</p>
 				<p>
 					<strong>Created: </strong>
-					{creationDateFormat(created)}
+					{/* {creationDateFormat(created)} */}
 				</p>
 				<div className='card-button'>
 					<Button

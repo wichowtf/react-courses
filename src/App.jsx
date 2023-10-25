@@ -15,15 +15,16 @@ import Register from './components/Registration/Registration';
 import { useEffect } from 'react';
 
 function App() {
-	const navigate = useNavigate();
-	useEffect(() => {
+	/* const navigate = useNavigate(); */
+	console.log('create app');
+	/* useEffect(() => {
 		const token = localStorage.getItem('token');
 		if (!token) {
 			navigate('/login', { replace: true });
 		} else {
 			navigate('/courses', { replace: true });
 		}
-	}, []);
+	}, []); */
 	return (
 		<div className='layout'>
 			<div className='center-layout'>

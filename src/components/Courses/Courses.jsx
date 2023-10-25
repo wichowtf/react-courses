@@ -1,32 +1,51 @@
-import React, { useEffect } from 'react';
-/* import { useState } from 'react'; */
+import React, { useEffect, useMemo, useState } from 'react';
 
 import SearchBar from './components/SearchBar/SearchBar';
-/* import Button from '../../common/Button/Button'; */
 import CourseCard from './components/CourseCard/CourseCard';
 import CreateCourse from '../CreateCourse/CreateCourse';
 
 import './Courses.css';
-import { /* useDispatch, */ useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-/* import { getAllCoursesAction } from '../../store/courses/actions'; */
-
-/* import { coursesListArray } from '../../constants'; */
+import { getAllCoursesAction } from '../../store/courses/actions';
 
 function Courses() {
-	const coursesListArray = useSelector((state) => state.courses);
-	/* console.log(coursesListArray); */
-	/* const dispatch = useDispatch(); */
+	var coursesListArray = useSelector((state) => state.courses);
+	const dispatch = useDispatch();
 	const [filteredArray, setFilteredArray] = React.useState([
 		...coursesListArray,
 	]);
+
+	const [actionFired, setActionFired] = useState(false);
+	console.log('create render', actionFired);
+
 	useEffect(() => {
 		setFilteredArray([...coursesListArray]);
 	}, [coursesListArray]);
 
-	/* useEffect(() => {
+	useEffect(() => {
+		if (!actionFired) {
+			setActionFired(true);
+			dispatch(getAllCoursesAction());
+		}
+	}, [dispatch, actionFired]);
+
+	console.log('create render');
+
+	/* const coursesListArray = useSelector((state) => state.courses);
+	const dispatch = useDispatch();
+	console.log('create render');
+
+	const filteredArray = React.useMemo(() => {
+		if (coursesListArray) {
+			return coursesListArray.slice();
+		}
+		return [];
+	}, [coursesListArray]);
+
+	useEffect(() => {
 		dispatch(getAllCoursesAction());
-	}, []); */
+	}, [dispatch]); */
 
 	function filterCourses(search) {
 		if (search !== '') {
@@ -41,17 +60,11 @@ function Courses() {
 		}
 	}
 
-	/* function updateCourses(course) {
-		coursesListArray.push(course);
-		setFilteredArray([...coursesListArray]);
-		console.log('update filter', coursesListArray);
-		console.log(course);
-	} */
 	return (
 		<div className='courses-container'>
 			<div className='search-bar2'>
 				<SearchBar emmitSearch={filterCourses} />
-				<CreateCourse /* updateCourses={updateCourses} */ />
+				<CreateCourse />
 			</div>
 			<div className='couses-list'>
 				{filteredArray.map((course, index) => {

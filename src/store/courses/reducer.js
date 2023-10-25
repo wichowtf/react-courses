@@ -1,7 +1,7 @@
 import * as types from './types.js';
 
 export const coursesInitialState = [
-	{
+	/* {
 		id: '234',
 		name: 'Java',
 		description:
@@ -36,7 +36,7 @@ export const coursesInitialState = [
 		authors: ['Jordi Wild', 'Blue label'],
 		duration: 90,
 		created: new Date('2021-04-23'),
-	},
+	}, */
 ];
 
 // Use the initialState as a default value
@@ -57,6 +57,9 @@ export const coursesReducer = (state = coursesInitialState, action) => {
 
 		case 'GET_ALL_COURSES':
 			return state;
+
+		case 'FETCH_DATA_SUCCESS':
+			return [...state, ...action.payload.result];
 
 		default:
 			return state;
