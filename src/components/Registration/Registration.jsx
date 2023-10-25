@@ -33,7 +33,7 @@ function Register() {
 	async function submitRegister(event) {
 		event.preventDefault();
 		const newUser = {
-			name: userName,
+			title: userName,
 			password: userPassword,
 			email: userEmail,
 		};

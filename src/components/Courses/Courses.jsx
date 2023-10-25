@@ -51,7 +51,7 @@ function Courses() {
 		if (search !== '') {
 			let aux = filteredArray.filter(
 				(course) =>
-					course.name.toLowerCase().includes(search.toLowerCase()) ||
+					course.title.toLowerCase().includes(search.toLowerCase()) ||
 					course.id === search
 			);
 			setFilteredArray([...aux]);
@@ -72,7 +72,7 @@ function Courses() {
 						<CourseCard
 							key={course.id}
 							id={course.id}
-							name={course.name}
+							title={course.title}
 							description={course.description}
 							authors={course.authors}
 							created={course.created}

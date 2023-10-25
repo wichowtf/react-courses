@@ -23,7 +23,7 @@ function CourseInfo() {
 	return (
 		<div className='course-container'>
 			<div className='course-desc'>
-				<h2>{course.name}</h2>
+				<h2>{course.title}</h2>
 				<p>{course.description}</p>
 			</div>
 			{renderCourse && (

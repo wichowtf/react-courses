@@ -1,9 +1,9 @@
 import * as types from './types.js';
 
 export const coursesInitialState = [
-	/* {
+	{
 		id: '234',
-		name: 'Java',
+		title: 'Java',
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 		authors: ['Dave Shapel', 'Jordi Wild'],
@@ -12,7 +12,7 @@ export const coursesInitialState = [
 	},
 	{
 		id: '2341',
-		name: 'JavaScript',
+		title: 'JavaScript',
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 		authors: ['nacho Amela'],
@@ -21,7 +21,7 @@ export const coursesInitialState = [
 	},
 	{
 		id: '2342',
-		name: 'Angular',
+		title: 'Angular',
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 		authors: ['Luis Arriaga'],
@@ -30,13 +30,13 @@ export const coursesInitialState = [
 	},
 	{
 		id: '2343',
-		name: 'ASP .NET',
+		title: 'ASP .NET',
 		description:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
 		authors: ['Jordi Wild', 'Blue label'],
 		duration: 90,
 		created: new Date('2021-04-23'),
-	}, */
+	},
 ];
 
 // Use the initialState as a default value

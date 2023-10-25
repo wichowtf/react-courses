@@ -12,7 +12,7 @@ import { useNavigate } from 'react-router';
 import { useDispatch } from 'react-redux';
 
 function CourseCard({
-	name,
+	title,
 	description,
 	duration,
 	created,
@@ -33,7 +33,7 @@ function CourseCard({
 	return (
 		<div className='card-container'>
 			<div className='card-name-section'>
-				<p className='course-name'>{name}</p>
+				<p className='course-name'>{title}</p>
 				<p className='course-description'>{description}</p>
 			</div>
 			<div className='card-details'>

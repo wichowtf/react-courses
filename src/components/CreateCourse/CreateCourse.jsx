@@ -30,7 +30,7 @@ function CreateCourse(props) {
 	function addCourse() {
 		let newCourse = {
 			id: Math.floor(Math.random() * 10001).toString(),
-			name: courseName,
+			title: courseName,
 			description: courseDescription,
 			authors: ['anonymuse'],
 			duration: courseDuration,
