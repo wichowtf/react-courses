@@ -7,6 +7,5 @@ export async function getAllCourses() {
 		},
 	}).then(async (res) => {
 		const result = await res.json();
-		console.log(result);
 	});
 }

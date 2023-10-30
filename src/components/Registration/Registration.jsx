@@ -45,8 +45,8 @@ function Register() {
 				'Content-Type': 'application/json',
 			},
 		}).then(async (res) => {
+			// eslint-disable-next-line no-unused-vars
 			const result = await res.json();
-			console.log(result);
 			navigate('/login', { replace: true });
 		});
 	}

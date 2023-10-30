@@ -4,7 +4,7 @@ import Button from '../../common/Button/Button';
 import Input from '../../common/Input/Input';
 
 import './CreateCourse.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { addCourseAction } from '../../store/courses/actions';
 
@@ -13,6 +13,8 @@ function CreateCourse(props) {
 	const [courseName, setCourseName] = useState('');
 	const [courseDescription, setCourseDescription] = useState('');
 	const [courseDuration, setCourseDuration] = useState('');
+
+	const token = useSelector((state) => state.user.token);
 
 	const dispatch = useDispatch();
 
@@ -29,12 +31,15 @@ function CreateCourse(props) {
 
 	function addCourse() {
 		let newCourse = {
-			id: Math.floor(Math.random() * 10001).toString(),
-			title: courseName,
-			description: courseDescription,
-			authors: ['anonymuse'],
-			duration: courseDuration,
-			created: new Date(),
+			/* id: Math.floor(Math.random() * 10001).toString(), */
+			body: {
+				title: courseName,
+				description: courseDescription,
+				authors: ['9b87e8b8-6ba5-40fc-a439-c4e30a373d36'],
+				duration: parseInt(courseDuration),
+			},
+			auth: token,
+			/* created: new Date(), */
 		};
 		dispatch(addCourseAction(newCourse));
 		/* props.updateCourses(); */

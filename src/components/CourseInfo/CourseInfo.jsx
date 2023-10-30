@@ -33,7 +33,7 @@ function CourseInfo() {
 						{formatDuration(course.duration)}
 					</div>
 					<div className='course-created'>
-						{creationDateFormat(course.created)}
+						{creationDateFormat(course.creationDate)}
 					</div>
 					<div className='course-authors'>{course.authors.join(', ')}</div>
 				</div>

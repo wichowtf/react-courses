@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link /* , useNavigate */ } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { LoginAction } from '../../store/user/actions';
 
 import Input from '../../common/Input/Input';
 import Button from '../../common/Button/Button';
@@ -11,7 +13,8 @@ function Login() {
 	const [userEmail, setUserEmail] = useState('');
 	const [userPassword, setUserPassword] = useState('');
 
-	const navigate = useNavigate();
+	/* const navigate = useNavigate(); */
+	const dispatch = useDispatch();
 
 	const isButtonDisabled =
 		userEmail === '' || userPassword === '' || userPassword.length < 6;
@@ -50,7 +53,7 @@ function Login() {
 			email: userEmail,
 		};
 
-		await fetch('http://localhost:4000/login', {
+		/* await fetch('http://localhost:4000/login', {
 			method: 'POST',
 			body: JSON.stringify(newUser),
 			headers: {
@@ -60,7 +63,11 @@ function Login() {
 			const result = await res.json();
 			localStorage.setItem('token', result.result);
 			navigate('/courses', { replace: true });
-		});
+		}); */
+
+		await dispatch(LoginAction(newUser));
+
+		/* navigate('/courses', { replace: true }); */
 	}
 
 	return (

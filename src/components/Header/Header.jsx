@@ -5,12 +5,23 @@ import Button from '../../common/Button/Button';
 
 import './Header.css';
 import { useNavigate } from 'react-router';
+import { useSelector } from 'react-redux';
 
 function Header() {
 	const navigate = useNavigate();
+	const token = useSelector((state) => state.user.token);
 
-	function handleLogout() {
+	async function handleLogout() {
 		localStorage.removeItem('token');
+		await fetch('http://localhost:4000/logout', {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: token,
+			},
+		}).then((res) => {
+			console.log(res);
+		});
 		navigate('/login');
 	}
 	return (

@@ -19,6 +19,8 @@ function CourseCard({
 	authors,
 	id,
 	index,
+	user,
+	token,
 }) {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
@@ -27,8 +29,16 @@ function CourseCard({
 		navigate('/courses/' + id);
 	}
 
+	function updateCourse() {
+		navigate('/courses/update/' + id);
+	}
+
 	function deleteCourse() {
-		dispatch(deleteCourseAction(id));
+		let aux = {
+			id,
+			token,
+		};
+		dispatch(deleteCourseAction(aux));
 	}
 	return (
 		<div className='card-container'>
@@ -47,7 +57,7 @@ function CourseCard({
 				</p>
 				<p>
 					<strong>Created: </strong>
-					{/* {creationDateFormat(created)} */}
+					{creationDateFormat(created)}
 				</p>
 				<div className='card-button'>
 					<Button
@@ -55,7 +65,22 @@ function CourseCard({
 						buttonText='Show course'
 						clicHandle={goToCourse}
 					/>
-					<Button type={true} buttonText='Delete' clicHandle={deleteCourse} />
+					{user ? (
+						<div>
+							<Button
+								type={true}
+								buttonText='Delete'
+								clicHandle={deleteCourse}
+							/>
+							<Button
+								type={true}
+								buttonText='Update'
+								clicHandle={updateCourse}
+							/>
+						</div>
+					) : (
+						<div></div>
+					)}
 				</div>
 			</div>
 		</div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import SearchBar from './components/SearchBar/SearchBar';
 import CourseCard from './components/CourseCard/CourseCard';
@@ -8,33 +8,27 @@ import './Courses.css';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getAllCoursesAction } from '../../store/courses/actions';
+import { getAllAuthors } from '../../store/authors/actions';
 
 function Courses() {
 	var coursesListArray = useSelector((state) => state.courses);
+	const currentUser = useSelector((state) => state.user);
 	const dispatch = useDispatch();
 	const [filteredArray, setFilteredArray] = React.useState([
 		...coursesListArray,
 	]);
-
-	const [actionFired, setActionFired] = useState(false);
-	console.log('create render', actionFired);
 
 	useEffect(() => {
 		setFilteredArray([...coursesListArray]);
 	}, [coursesListArray]);
 
 	useEffect(() => {
-		if (!actionFired) {
-			setActionFired(true);
-			dispatch(getAllCoursesAction());
-		}
-	}, [dispatch, actionFired]);
-
-	console.log('create render');
+		dispatch(getAllCoursesAction());
+		dispatch(getAllAuthors());
+	}, [dispatch]);
 
 	/* const coursesListArray = useSelector((state) => state.courses);
 	const dispatch = useDispatch();
-	console.log('create render');
 
 	const filteredArray = React.useMemo(() => {
 		if (coursesListArray) {
@@ -64,7 +58,11 @@ function Courses() {
 		<div className='courses-container'>
 			<div className='search-bar2'>
 				<SearchBar emmitSearch={filterCourses} />
-				<CreateCourse />
+				{currentUser.user.email === 'admin@email.com' ? (
+					<CreateCourse />
+				) : (
+					<div></div>
+				)}
 			</div>
 			<div className='couses-list'>
 				{filteredArray.map((course, index) => {
@@ -75,9 +73,11 @@ function Courses() {
 							title={course.title}
 							description={course.description}
 							authors={course.authors}
-							created={course.created}
+							created={course.creationDate}
 							duration={course.duration}
 							index={index}
+							user={currentUser.user.email === 'admin@email.com'}
+							token={currentUser.token}
 						/>
 					);
 				})}

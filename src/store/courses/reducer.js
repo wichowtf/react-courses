@@ -1,7 +1,7 @@
 import * as types from './types.js';
 
 export const coursesInitialState = [
-	{
+	/* {
 		id: '234',
 		title: 'Java',
 		description:
@@ -36,7 +36,7 @@ export const coursesInitialState = [
 		authors: ['Jordi Wild', 'Blue label'],
 		duration: 90,
 		created: new Date('2021-04-23'),
-	},
+	}, */
 ];
 
 // Use the initialState as a default value
@@ -59,7 +59,20 @@ export const coursesReducer = (state = coursesInitialState, action) => {
 			return state;
 
 		case 'FETCH_DATA_SUCCESS':
-			return [...state, ...action.payload.result];
+			return [/* ...state, */ ...action.payload.result];
+
+		case 'UPLOAD_SUCCESS':
+			const updatedArray = state.map((item) => {
+				if (item.id === action.payload.id) {
+					// Reemplaza el objeto con el nuevo objeto
+					return action.payload;
+				}
+				return item;
+			});
+			return updatedArray;
+
+		case 'DELETE_COURSE':
+			return state.filter((item) => item.id !== action.payload.id);
 
 		default:
 			return state;
