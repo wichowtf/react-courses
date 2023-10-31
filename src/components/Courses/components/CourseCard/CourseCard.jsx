@@ -15,8 +15,8 @@ function CourseCard({
 	title,
 	description,
 	duration,
-	created,
-	authors,
+	created = '17/12/1999',
+	authors = [],
 	id,
 	index,
 	user,
@@ -41,7 +41,7 @@ function CourseCard({
 		dispatch(deleteCourseAction(aux));
 	}
 	return (
-		<div className='card-container'>
+		<div className='card-container' data-testid='course-card'>
 			<div className='card-name-section'>
 				<p className='course-name'>{title}</p>
 				<p className='course-description'>{description}</p>

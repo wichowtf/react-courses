@@ -56,7 +56,7 @@ function CreateCourse(props) {
 		setCourseDuration(event.target.value);
 	}
 	return (
-		<div>
+		<div data-testid='course-form'>
 			<Button type={true} buttonText='Add Course' clicHandle={openDialog} />
 			{isOpen && (
 				<div className='dialog'>

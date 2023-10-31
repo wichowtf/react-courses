@@ -25,21 +25,13 @@ function Courses() {
 	useEffect(() => {
 		dispatch(getAllCoursesAction());
 		dispatch(getAllAuthors());
+		/* initView(); */
 	}, [dispatch]);
 
-	/* const coursesListArray = useSelector((state) => state.courses);
-	const dispatch = useDispatch();
-
-	const filteredArray = React.useMemo(() => {
-		if (coursesListArray) {
-			return coursesListArray.slice();
-		}
-		return [];
-	}, [coursesListArray]);
-
-	useEffect(() => {
+	/* function initView() {
 		dispatch(getAllCoursesAction());
-	}, [dispatch]); */
+		dispatch(getAllAuthors());
+	} */
 
 	function filterCourses(search) {
 		if (search !== '') {

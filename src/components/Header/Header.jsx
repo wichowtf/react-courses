@@ -26,7 +26,9 @@ function Header() {
 	}
 	return (
 		<div className='header-container'>
+			{/* <React.Fragment data-testid='logo'> */}
 			<Logo />
+			{/* </React.Fragment> */}
 			<div>
 				<Button buttonText='Dave' type={false} />
 				<Button buttonText='Logout' clicHandle={handleLogout} type={true} />

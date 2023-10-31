@@ -8,6 +8,7 @@ function Logo() {
 			src='https://logos-download.com/wp-content/uploads/2019/06/Epam_Systems_Logo.png'
 			alt='EPAM logo'
 			className='logo-img'
+			data-testid='logo'
 		/>
 	);
 }
